@@ -31,15 +31,25 @@ export class AppComponent implements OnInit{
       console.log(err);
     })
   }
+ 
+  onselectedProducts(){
+    this.currentCategorie=undefined;
+    this.router.navigateByUrl("/products/1/0");
+  }
 
   getProductsByCat(c){
     this.currentCategorie=c;
     this.router.navigateByUrl('/products/2/'+c.id);
   }
 
-  onselectedProducts(){
+  onProductsPromo(){
     this.currentCategorie=undefined;
-    this.router.navigateByUrl("/products/1/2");
+    this.router.navigateByUrl('/products/3/0');
+  }
+
+  onProductsDispo(){
+    this.currentCategorie=undefined;
+    this.router.navigateByUrl('/products/4/0');
   }
   
 
