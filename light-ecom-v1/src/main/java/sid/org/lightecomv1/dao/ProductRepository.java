@@ -28,5 +28,12 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     // @RestResource(path = "/productsByKeyword")
     // @Query("select p from Product p where p.name like : x")
     // public List<Product> chercher(@Param("x") String mc);
+
+
+
+    @RestResource(path = "/promoProducts")
+    public List<Product> findByPromotionIsTrue();
     
+    @RestResource(path = "/dispoProducts")
+    public List<Product> findByAvailableIsTrue();
 }
