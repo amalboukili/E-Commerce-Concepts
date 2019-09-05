@@ -1,5 +1,7 @@
 <div *ngIf="products">
-    <div><h3>{{title}}</h3></div>
+    <div>
+        <h3>{{title}}</h3>
+    </div>
     <div *ngFor="let p of products._embedded.products">
         <div class="col-md-6">
             <div class="panel panel-default">
@@ -8,15 +10,17 @@
                     <table>
                         <tr>
                             <td rowspan="3">
-                                <img height="100" src="{{this.catService.host+'/photoProduct/'+p.id}} ">
-                                <p> <button (click)="onEditPhoto(p)">
-                                        <span class="glyphicon glyphicon-edit"></span>
-                                    </button> </p>
-                                <p *ngIf="editPhoto && currentProduct==p">
-                                    <input type="file" (change)="onSelectedFile($event)">
-                                    <button class="btn btn-success" (click)="uploadPhoto()">Upload</button>
-                                    {{progress}}
-                                </p>
+                                <img height="100" src="{{this.catService.host+'/photoProduct/'+p.id+'?ts='+getTS()}} ">
+                                <div *ngIf="isAdmin()">
+                                    <p> <button (click)="onEditPhoto(p)">
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                        </button> </p>
+                                    <p *ngIf="editPhoto && currentProduct==p">
+                                        <input type="file" (change)="onSelectedFile($event)">
+                                        <button class="btn btn-success" (click)="uploadPhoto()">Upload</button>
+                                        {{progress}}
+                                    </p>
+                                </div>
                             </td>
                         </tr>
                         <tr>
